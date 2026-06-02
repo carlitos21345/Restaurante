@@ -1,0 +1,47 @@
+<div class="menu-page animate-fade-in">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-tag">Delicias de El Valle</span>
+      <h2>Nuestro Menú Tradicional</h2>
+      <p>Explora la gastronomía de Loja y déjate llevar por aromas y sabores únicos que cuentan historias en cada bocado.</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="categories-tabs">
+      <button 
+        *ngFor="let cat of categories" 
+        [class.active]="activeCategory === cat.id"
+        (click)="setCategory(cat.id)"
+        class="tab-btn">
+        {{ cat.name }}
+      </button>
+    </div>
+
+    <!-- Menu Grid -->
+    <div class="menu-grid">
+      <div 
+        *ngFor="let item of filteredItems" 
+        class="card menu-card"
+        [class.popular-card]="item.popular">
+        <div *ngIf="item.popular" class="popular-badge">Popular 🔥</div>
+        <div class="menu-item-header">
+          <div class="item-icon-wrapper">
+            <span class="item-icon">{{ item.icon }}</span>
+          </div>
+          <span class="item-price">${{ item.price.toFixed(2) }}</span>
+        </div>
+        <div class="menu-item-body">
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extra banner / Call to action -->
+    <div class="menu-footer-banner card glass-panel text-center">
+      <h3>¿Vienes con un grupo grande o deseas celebrar una ocasión especial?</h3>
+      <p>Ofrecemos servicio de catering y reservas personalizadas en el barrio El Valle de Loja.</p>
+      <a routerLink="/contacto" class="btn btn-primary">Reservar una Mesa Ahora 📅</a>
+    </div>
+  </div>
+</div>
